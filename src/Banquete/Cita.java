@@ -74,9 +74,13 @@ public class Cita {
                         if (opc != 'a' || opc != 'A') {
                             System.out.print("Ingrese de nuevo número de empleado:");
                             numEmpleado = s.nextInt();
-                            cliente.consultarCliente(numEmpleado);
+                            empleado.consultarEmpleado(numEmpleado);
+                            bandera = false;
+                        }else{
+                            bandera = true;
                         }
-                    } while (opc != 'a' || opc != 'A');
+
+                    } while (bandera == false);
 
                     preparedCita.setLong(1, numero);
                     preparedCita.setString(2, fecha);
@@ -119,9 +123,13 @@ public class Cita {
                         if (opc != 'a' || opc != 'A') {
                             System.out.print("Ingrese de nuevo número de empleado:");
                             numEmpleado = s.nextInt();
-                            cliente.consultarCliente(numEmpleado);
+                            empleado.consultarEmpleado(numEmpleado);
+                            bandera = false;
+                        }else{
+                            bandera = true;
                         }
-                    } while (opc != 'a' || opc != 'A');
+
+                    } while (bandera == false);
 
                     preparedCita.setLong(1, numero);
                     preparedCita.setString(2, fecha);
@@ -153,11 +161,15 @@ public class Cita {
                     System.out.println("¿Los datos del empleado son correctos? A=Si/ cualquier otra tecla=No");
                     opc = s.next().charAt(0);
                     if (opc != 'a' || opc != 'A') {
-                        System.out.print("Ingrese de nuevo el número de empleado:");
+                        System.out.print("Ingrese de nuevo número de empleado:");
                         numEmpleado = s.nextInt();
-                        cliente.consultarCliente(numEmpleado);
+                        empleado.consultarEmpleado(numEmpleado);
+                        bandera = false;
+                    }else{
+                        bandera = true;
                     }
-                } while (opc != 'a' || opc != 'A');
+
+                } while (bandera == false);
                 System.out.print("Número de cliente: ");
                 numCliente = s.nextInt();
                 cliente.consultarCliente(numCliente);
@@ -168,8 +180,11 @@ public class Cita {
                         System.out.print("Ingrese de nuevo el número de cliente:");
                         numCliente = s.nextInt();
                         cliente.consultarCliente(numCliente);
+                        bandera = false;
+                    }else{
+                        bandera = true;
                     }
-                } while (opc != 'a' || opc != 'A');
+                } while (bandera == false);
 
                 preparedCita.setLong(1, numero);
                 preparedCita.setString(2, fecha);
