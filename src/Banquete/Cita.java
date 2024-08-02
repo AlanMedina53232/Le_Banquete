@@ -42,6 +42,7 @@ public class Cita {
         Cliente cliente = new Cliente();
         Empleado empleado = new Empleado();
         Scanner s = new Scanner(System.in);
+        Boolean bandera = false;
         String altaCita = "INSERT INTO cita (numero, fecha, hora, empleado, cliente) VALUES (?, ?, ?, ?, ?)";
         try (Connection conexion = ConexionBD.getConnection();
                 Statement statement = conexion.createStatement();
@@ -94,7 +95,12 @@ public class Cita {
                         cliente.consultarCliente(numCliente);
                         System.out.println("¿Los datos del cliente son correctos? A=Si/ cualquier otra tecla=No");
                         opc = s.next().charAt(0);
-                    } while (opc != 'a' || opc != 'A');
+                        if(opc == 'a' || opc == 'A'){
+                            bandera = true;
+                        }else{
+                            bandera = false;
+                        }
+                    } while (bandera == false);
                     // Solicitar información de la cita al usuario
 
                     System.out.print("Ingrese el número de cita: ");
